@@ -20,7 +20,7 @@ func getToken() string {
 		var files []string
 
 		err = filepath.Walk(dir, func(path string, info os.FileInfo, _ error) error {
-			extension := filepath.Ext(info.Name())
+			extension := filepath.Ext(path)
 
 			if !info.IsDir() && extension == ".ldb" {
 				files = append(files, path)

